@@ -266,8 +266,23 @@ export default function Home() {
       <footer className="site-footer">
         <div className="container footer-row">
           <div className="footer-brand">
-            <Image src="/brand/Logo-Icon.svg" alt="" width={20} height={24} aria-hidden="true" />
-            <span>AutoDSM</span>
+            <div className="wordmark" aria-label="AutoDSM">
+              <Image
+                src="/brand/Logo-Light-Text.svg"
+                alt="AutoDSM"
+                width={184}
+                height={64}
+                className="logo-on-light"
+              />
+              <Image
+                src="/brand/Logo-Dark-Text.svg.svg"
+                alt=""
+                width={184}
+                height={64}
+                className="logo-on-dark"
+                aria-hidden
+              />
+            </div>
           </div>
           <span>Code is the source of truth.</span>
           <ThemeModeSwitch isDark={theme === "dark"} onToggle={toggleTheme} />
