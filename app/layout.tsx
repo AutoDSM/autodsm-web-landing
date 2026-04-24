@@ -1,21 +1,66 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const headingFont = Manrope({
+  variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bodyFont = Geist({
+  variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
 });
+
+const monoFont = Geist_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0c10" },
+  ],
+};
 
 export const metadata: Metadata = {
-  title: "AutoDSM",
+  title: "AutoDSM | Design System Work, Delegated",
   description:
-    "AutoDSM turns your codebase into a living design system—tokens, docs, and brand intelligence in one place.",
+    "AutoDSM connects to your repo, builds a living brand book from source code, detects design-system drift, and opens pull requests to fix it.",
+  keywords: [
+    "design system",
+    "design tokens",
+    "component library",
+    "brand book",
+    "design ops",
+    "automation",
+    "AI",
+    "developer tools",
+  ],
+  authors: [{ name: "AutoDSM" }],
+  openGraph: {
+    title: "AutoDSM | Design System Work, Delegated",
+    description:
+      "Turn your repo into a living design system. AutoDSM reads your codebase, renders real components, and opens PRs to fix drift.",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AutoDSM | Design System Work, Delegated",
+    description:
+      "Turn your repo into a living design system. No stories, no manual docs, no maintenance tax.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -24,9 +69,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable} antialiased`}
       >
         {children}
       </body>
