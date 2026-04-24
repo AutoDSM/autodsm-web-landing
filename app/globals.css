@@ -475,12 +475,12 @@ ul {
   margin-top: 2.5rem;
   border-radius: 1.25rem;
   overflow: hidden;
-  border: none;
+  border-width: 0px;
+  border-style: none;
+  border-color: rgba(0, 0, 0, 0);
   border-image: none;
   background: color-mix(in srgb, var(--bg-elevated) 90%, transparent);
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 16px 40px -8px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 /* Light / dark hero screenshots share one grid cell (wrappers stack; Next Image may wrap img) */
@@ -552,6 +552,15 @@ ul {
 
 .section-head.wide {
   max-width: 64rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+
+.section-head.wide > h2,
+.section-head.wide > .replica-cards-row {
+  flex: 1 1 100%;
+  min-width: 0;
 }
 
 .section h2,
@@ -564,6 +573,10 @@ ul {
   text-wrap: balance;
 }
 
+#final-cta .final-cta-inner > h2:first-of-type {
+  margin-top: 0;
+}
+
 /* Product section: heavier headline + supporting span */
 #product .section-head h2 {
   font-weight: 800;
@@ -573,9 +586,26 @@ ul {
   font-weight: 700;
 }
 
+#product .section-head.wide {
+  padding-top: 72px;
+}
+
 #product.section {
   min-height: 90vh;
   min-height: 90dvh;
+}
+
+#final-cta.section {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* How it works: section rhythm (tighter than default .section) */
+#how-it-works {
+  padding-top: 32px;
+  padding-bottom: 64px;
 }
 
 /* How it works: heavier headline */
@@ -605,7 +635,7 @@ ul {
 }
 
 .replica-cards-row {
-  margin-top: 3rem;
+  margin-top: 48px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -921,6 +951,10 @@ ul {
    Final CTA (plain, no card chrome)
    ───────────────────────────────────────────────────────────────── */
 .final-cta-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   text-align: center;
 }
 
@@ -1290,8 +1324,6 @@ a:focus-visible {
 /* Staggered entrance delays for hero elements */
 .hero h1.hero-entrance {
   height: fit-content;
-  line-height: 120%;
-  vertical-align: top;
   animation-delay: 0ms;
   animation-duration: 900ms;
   background-image: linear-gradient(180deg, rgba(18, 18, 18, 1) 0%, rgba(51, 51, 51, 1) 99%);

@@ -228,39 +228,32 @@ export default function Home() {
               Build your product, build your brand.
               <span> AutoDSM gives teams a precise system to build from instead of a stale approximation.</span>
             </h2>
-          </div>
-          <div className="replica-cards-row">
-            {replicaCards.map((card) => (
-              <div className="replica-card-slot" key={card.light}>
-                <div className="replica-card-media replica-card-media--light">
-                  <Image
-                    src={card.light}
-                    alt={card.alt}
-                    width={312}
-                    height={225}
-                    className="replica-card-image"
-                    sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+            <div className="replica-cards-row">
+              {replicaCards.map((card) => (
+                <div className="replica-card-slot" key={card.light}>
+                  <div className="replica-card-media replica-card-media--light">
+                    <Image
+                      src={card.light}
+                      alt={card.alt}
+                      width={312}
+                      height={225}
+                      className="replica-card-image"
+                      sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="replica-card-media replica-card-media--dark">
+                    <Image
+                      src={card.dark}
+                      alt={card.alt}
+                      width={312}
+                      height={225}
+                      className="replica-card-image"
+                      sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
                 </div>
-                <div className="replica-card-media replica-card-media--dark">
-                  <Image
-                    src={card.dark}
-                    alt={card.alt}
-                    width={312}
-                    height={225}
-                    className="replica-card-image"
-                    sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="intro-band">
-            <p>
-              Your codebase already knows the design system. AutoDSM reads the code directly,
-              assembles the system automatically, and gives your team one place to see it, share it,
-              and improve it.
-            </p>
+              ))}
+            </div>
           </div>
         </section>
 
