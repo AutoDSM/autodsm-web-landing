@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Manrope } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const headingFont = Manrope({
@@ -73,6 +74,9 @@ export default function RootLayout({
       <body
         className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable} antialiased`}
       >
+        <Script id="autodsm-theme-init" strategy="beforeInteractive">
+          {`(function(){try{var k="autodsm-theme",s=localStorage.getItem(k);var t=s==="light"||s==="dark"?s:matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;}catch(e){}})();`}
+        </Script>
         {children}
       </body>
     </html>
