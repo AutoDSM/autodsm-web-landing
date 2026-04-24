@@ -475,13 +475,12 @@ ul {
   margin-top: 2.5rem;
   border-radius: 1.25rem;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--border-default) 70%, transparent);
+  border: none;
+  border-image: none;
   background: color-mix(in srgb, var(--bg-elevated) 90%, transparent);
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.05),
-    0 16px 40px -8px rgba(0, 0, 0, 0.08),
-    0 0 0 1px color-mix(in srgb, var(--border-subtle) 50%, transparent);
-  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms ease;
+    0 16px 40px -8px rgba(0, 0, 0, 0.08);
 }
 
 /* Light / dark hero screenshots share one grid cell (wrappers stack; Next Image may wrap img) */
@@ -499,14 +498,6 @@ ul {
 
 :root[data-theme="dark"] .hero-dashboard-frame .hero-dashboard-media--dark {
   display: block;
-}
-
-.hero-dashboard-frame:hover {
-  transform: translateY(-4px) scale(1.005);
-  box-shadow:
-    0 8px 12px -2px rgba(0, 0, 0, 0.08),
-    0 24px 56px -12px rgba(0, 0, 0, 0.12),
-    0 0 0 1px color-mix(in srgb, var(--border-default) 60%, transparent);
 }
 
 .hero-dashboard-image,
@@ -1366,19 +1357,6 @@ a:focus-visible {
   transform: translateY(0);
 }
 
-/* Dashboard frame subtle hover */
-.hero-dashboard-frame {
-  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-dashboard-frame:hover {
-  transform: translateY(-6px) scale(1.005);
-  box-shadow:
-    0 12px 40px -8px rgba(0, 0, 0, 0.12),
-    0 0 0 1px color-mix(in srgb, var(--border-default) 60%, transparent);
-}
-
 /* Card hover effects */
 .card,
 .faq-item {
@@ -1487,10 +1465,6 @@ a:focus-visible {
 /* ─────────────────────────────────────────────────────────────────
    Dashboard Parallax
    ───────────────────────────────────────────────────────────────── */
-.hero-dashboard-frame {
-  will-change: transform;
-}
-
 .parallax-container {
   transform-style: preserve-3d;
   perspective: 1000px;
