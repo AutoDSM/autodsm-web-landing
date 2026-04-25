@@ -48,19 +48,16 @@ const platformCards = [
   {
     title: "Your brand book, generated from code.",
     body: "Components render live. Tokens stay current. Typography, colors, spacing, and assets update automatically as your codebase evolves.",
-    items: ["Live component rendering", "Auto-extracted tokens", "Shareable galleries", "Always current"],
     icon: "palette",
   },
   {
     title: "Give coding agents system awareness.",
     body: "The CLI generates context files that let Cursor, Claude Code, Copilot, and Codex build with your real components instead of guessing.",
-    items: ["components.txt export", "Cursor rules generation", "CLAUDE.md integration", "Codex-ready context"],
     icon: "sparkles",
   },
   {
     title: "Detect issues. Ship fixes. Automatically.",
     body: "AutoDSM continuously scans for hardcoded values, orphaned components, and token misuse—then opens pull requests with validated fixes.",
-    items: ["Continuous scanning", "Scoped PR generation", "Pre-validated fixes", "Human-in-the-loop review"],
     icon: "shield-check",
   },
 ];
@@ -165,7 +162,9 @@ export default function Home() {
         <section className="hero-shell container">
           <div className="hero">
             <div className="hero-lead">
-              <h1 className="hero-entrance">Transform your codebase into a living design system</h1>
+              <div className="hero-heading">
+                <h1 className="hero-entrance">Transform your codebase into a living design system</h1>
+              </div>
               <p className="hero-sub hero-entrance">
                 AutoDSM is the design system manager built for the agentic era. Connect it with your
                 codebase, visualize your designs, and send agents to resolve UI issues.
@@ -181,9 +180,18 @@ export default function Home() {
                 alt="AutoDSM dashboard preview in light mode: tokens, navigation, and design system overview"
                 width={1208}
                 height={868}
-                className="hero-dashboard-image"
+                className="hero-dashboard-image hero-dashboard-image--desktop"
                 sizes="(max-width: 1232px) calc(100vw - 2.5rem), 1200px"
                 priority
+                unoptimized
+              />
+              <Image
+                src="/visuals/landing/hero-dashboard-phone-light.svg"
+                alt="AutoDSM mobile dashboard preview in light mode: tokens, navigation, and design system overview"
+                width={400}
+                height={642}
+                className="hero-dashboard-image hero-dashboard-image--phone"
+                sizes="(max-width: 499px) calc(100vw - 2.5rem), 400px"
                 unoptimized
               />
             </div>
@@ -193,9 +201,18 @@ export default function Home() {
                 alt="AutoDSM dashboard preview in dark mode: tokens, navigation, and design system overview"
                 width={1208}
                 height={868}
-                className="hero-dashboard-image"
+                className="hero-dashboard-image hero-dashboard-image--desktop"
                 sizes="(max-width: 1232px) calc(100vw - 2.5rem), 1200px"
                 priority
+                unoptimized
+              />
+              <Image
+                src="/visuals/landing/hero-dashboard-phone-dark.svg"
+                alt="AutoDSM mobile dashboard preview in dark mode: tokens, navigation, and design system overview"
+                width={400}
+                height={642}
+                className="hero-dashboard-image hero-dashboard-image--phone"
+                sizes="(max-width: 499px) calc(100vw - 2.5rem), 400px"
                 unoptimized
               />
             </div>
@@ -240,9 +257,14 @@ export default function Home() {
 
         {/* ─────────────── How It Works ─────────────── */}
         <section className="section container reveal" id="how-it-works">
-          <div className="section-head">
-            <h2>Three steps. Zero configuration.</h2>
-            <p>No stories to author. No config files to maintain. AutoDSM reads the code and handles the rest.</p>
+          <div className="section-head section-head--wide-titles">
+            <h2>
+              Three steps. Zero configuration.
+              <span>
+                {" "}
+                No stories to author. No config files to maintain. AutoDSM reads the code and handles the rest.
+              </span>
+            </h2>
           </div>
           <div className="process-list">
             {steps.map((step) => (
@@ -260,8 +282,11 @@ export default function Home() {
         {/* ─────────────── Platform Features ─────────────── */}
         <section className="section section-muted reveal" id="features">
           <div className="container">
-            <div className="section-head">
-              <h2>Everything you need to own your design system.</h2>
+            <div className="section-head section-head--wide-titles">
+              <h2>
+                Everything you need to own your design system.
+                <span>Live components, real tokens, and context for your agents—always tied to the repo.</span>
+              </h2>
             </div>
             <div className="grid feature-grid">
               {platformCards.map((card) => (
@@ -269,11 +294,6 @@ export default function Home() {
                   <FeatureIcon type={card.icon} />
                   <h3>{card.title}</h3>
                   <p>{card.body}</p>
-                  <ul className="clean-list">
-                    {card.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
                 </article>
               ))}
             </div>
@@ -281,9 +301,12 @@ export default function Home() {
         </section>
 
         {/* ─────────────── FAQ ─────────────── */}
-        <section className="section container reveal">
-          <div className="section-head">
-            <h2>Common questions</h2>
+        <section className="section container reveal" id="faq">
+          <div className="section-head section-head--wide-titles">
+            <h2>
+              Common questions.
+              <span>How it differs from Storybook, how it pairs with AI tools, and what “fix” really means.</span>
+            </h2>
           </div>
           <div className="faq-list">
             {faqs.map((faq, index) => (
@@ -319,11 +342,14 @@ export default function Home() {
         {/* ─────────────── Final CTA ─────────────── */}
         <section className="section container reveal" id="final-cta">
           <div className="final-cta-inner">
-            <h2>Stop maintaining your design system by hand.</h2>
+            <div className="section-head">
+              <h2>Stop maintaining your design system by hand.</h2>
+            </div>
             <p>
-              Connect your repo, render the truth, and let AutoDSM handle the work between design
-              and code.
+              AutoDSM gives you a single living brand book, agent-ready context, and pull requests
+              when drift shows up.
             </p>
+            <WaitlistSignup idSuffix="final-cta" />
           </div>
         </section>
       </main>

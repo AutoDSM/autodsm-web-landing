@@ -4,7 +4,13 @@ import { FormEvent, useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function WaitlistSignup() {
+export type WaitlistSignupProps = {
+  /** When set, label/input use `waitlist-email-${idSuffix}` so multiple forms on a page stay valid. */
+  idSuffix?: string;
+};
+
+export function WaitlistSignup({ idSuffix }: WaitlistSignupProps = {}) {
+  const inputId = idSuffix ? `waitlist-email-${idSuffix}` : "waitlist-email";
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -50,11 +56,11 @@ export function WaitlistSignup() {
   return (
     <div className="waitlist-block hero-entrance">
       <form className="waitlist-form" onSubmit={onSubmit} noValidate>
-        <label htmlFor="waitlist-email" className="sr-only">
+        <label htmlFor={inputId} className="sr-only">
           Email for waitlist
         </label>
         <input
-          id="waitlist-email"
+          id={inputId}
           name="email"
           type="email"
           inputMode="email"

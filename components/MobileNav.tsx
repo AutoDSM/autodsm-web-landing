@@ -1,13 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 const MOBILE_LINKS = [
   { href: "#product", label: "Product" },
   { href: "#how-it-works", label: "How it works" },
   { href: "#features", label: "Features" },
-  { href: "#final-cta", label: "Get started" },
 ] as const;
+
+const DEMO_HREF = "https://autodsm.vercel.app/demo";
 
 const FOCUSABLE = "a[href]";
 
@@ -141,6 +143,29 @@ export function MobileNav() {
               <p id={titleId} className="sr-only">
                 Site sections
               </p>
+              <a
+                href="#product"
+                className="wordmark mobile-nav__brand"
+                aria-label="AutoDSM home"
+                onClick={close}
+              >
+                <Image
+                  src="/brand/Logo-Light-Text.svg"
+                  alt=""
+                  width={184}
+                  height={64}
+                  className="logo-on-light"
+                  aria-hidden
+                />
+                <Image
+                  src="/brand/Logo-Dark-Text.svg.svg"
+                  alt=""
+                  width={184}
+                  height={64}
+                  className="logo-on-dark"
+                  aria-hidden
+                />
+              </a>
               <nav
                 className="mobile-nav__list"
                 aria-label="Primary navigation"
@@ -155,6 +180,15 @@ export function MobileNav() {
                     {link.label}
                   </a>
                 ))}
+                <a
+                  href={DEMO_HREF}
+                  className="mobile-nav__cta btn primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={close}
+                >
+                  View demo
+                </a>
               </nav>
             </div>
           </>

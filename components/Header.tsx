@@ -30,7 +30,17 @@ function HeaderContent() {
         <a href="#how-it-works">How it works</a>
         <a href="#features">Features</a>
       </nav>
-      <MobileNav />
+      <div className="nav-actions">
+        <a
+          className="btn primary mini"
+          href="https://autodsm.vercel.app/demo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Demo
+        </a>
+        <MobileNav />
+      </div>
     </div>
   );
 }
