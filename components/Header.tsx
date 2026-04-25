@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { MobileNav } from "@/components/MobileNav";
 
 function HeaderContent() {
   return (
@@ -27,7 +28,9 @@ function HeaderContent() {
       <nav className="main-nav" aria-label="Primary navigation">
         <a href="#product">Product</a>
         <a href="#how-it-works">How it works</a>
+        <a href="#features">Features</a>
       </nav>
+      <MobileNav />
     </div>
   );
 }
