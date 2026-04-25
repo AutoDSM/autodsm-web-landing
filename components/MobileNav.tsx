@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { AUTODSM_DEMO_URL } from "@/lib/siteUrls";
 
 const MOBILE_LINKS = [
   { href: "#product", label: "Product" },
   { href: "#how-it-works", label: "How it works" },
   { href: "#features", label: "Features" },
 ] as const;
-
-const DEMO_HREF = "https://autodsm.vercel.app/demo";
 
 const FOCUSABLE = "a[href]";
 
@@ -170,6 +169,16 @@ export function MobileNav() {
                 className="mobile-nav__list"
                 aria-label="Primary navigation"
               >
+                <a
+                  href={AUTODSM_DEMO_URL}
+                  className="mobile-nav__cta btn primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={close}
+                  aria-label="View product demo (opens in new tab)"
+                >
+                  View demo
+                </a>
                 {MOBILE_LINKS.map((link) => (
                   <a
                     key={link.href}
@@ -180,15 +189,6 @@ export function MobileNav() {
                     {link.label}
                   </a>
                 ))}
-                <a
-                  href={DEMO_HREF}
-                  className="mobile-nav__cta btn primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={close}
-                >
-                  View demo
-                </a>
               </nav>
             </div>
           </>

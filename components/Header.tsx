@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { MobileNav } from "@/components/MobileNav";
+import { AUTODSM_DEMO_URL } from "@/lib/siteUrls";
 
 function HeaderContent() {
   return (
@@ -33,11 +34,12 @@ function HeaderContent() {
       <div className="nav-actions">
         <a
           className="btn primary mini"
-          href="https://autodsm.vercel.app/demo"
+          href={AUTODSM_DEMO_URL}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="View product demo (opens in new tab)"
         >
-          View Demo
+          View demo
         </a>
         <MobileNav />
       </div>
