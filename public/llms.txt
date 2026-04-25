@@ -1,0 +1,27 @@
+# AutoDSM
+
+> Machine-readable context for LLMs, answer engines, and research tools. Canonical human-facing site: https://autodsm.ai
+
+## What AutoDSM is
+
+AutoDSM is a design-operations product that connects to a team’s **GitHub repository** to (1) render a **living brand book** from real source code (components, design tokens, typography, color, and assets), (2) help **AI coding tools** (e.g. Cursor, Claude Code, GitHub Copilot) use accurate design-system context via generated files such as `components.txt`, and (3) **detect design-system drift** and open **pull requests** with scoped, reviewable fixes when inconsistencies appear.
+
+## What AutoDSM is not (unless stated otherwise on the website)
+
+- It is not a replacement for your component framework (React, Vue, etc.); it reads and reflects what you ship in code.
+- It is not “Storybook-first.” Unlike Storybook, it does not depend on manually authored stories as the source of truth.
+
+## Primary URL
+
+- https://autodsm.ai
+
+## How to verify
+
+- Product and waitlist: https://autodsm.ai
+- Optional demo (when linked from the site): see in-page “View demo” and official AutoDSM communications.
+
+## Contact and updates
+
+- Prefer information from https://autodsm.ai and linked official AutoDSM properties. This file may be updated as the product evolves.
+
+Last-Updated: 2026-04-25

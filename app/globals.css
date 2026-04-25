@@ -988,9 +988,23 @@ ul {
 }
 
 .section-head.wide > h2,
+.section-head.wide > .product-definition,
 .section-head.wide > .replica-cards-row {
   flex: 1 1 100%;
   min-width: 0;
+}
+
+.product-definition {
+  margin: 1.25rem 0 0;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.product-definition strong {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .section h2,
@@ -1364,9 +1378,28 @@ ul {
 
 .footer-brand {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
   font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.footer-aux {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+}
+
+.footer-aux-link {
+  color: var(--text-tertiary);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.footer-aux-link:hover {
   color: var(--text-secondary);
 }
 

@@ -30,6 +30,7 @@ function HeaderContent() {
         <a href="#product">Product</a>
         <a href="#how-it-works">How it works</a>
         <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
       </nav>
       <div className="nav-actions">
         <a

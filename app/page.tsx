@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { ThemeModeSwitch } from "@/components/ThemeModeSwitch";
 import { WaitlistSignup } from "@/components/WaitlistSignup";
+import { LANDING_FAQS } from "@/data/faqs";
 
 type ThemeMode = "dark" | "light";
 
@@ -88,24 +89,6 @@ const FeatureIcon = ({ type }: { type: string }) => {
   };
   return <span className="feature-icon">{icons[type]}</span>;
 };
-
-const faqs = [
-  {
-    question: "How is this different from Storybook?",
-    answer:
-      "Storybook depends on authored stories. AutoDSM reads source code directly, generates the living system, and can open pull requests to resolve drift.",
-  },
-  {
-    question: "Can it work with AI coding tools?",
-    answer:
-      "Yes. The free CLI generates structured context files and components.txt so Cursor, Claude Code, Copilot, and Codex can build with the real system.",
-  },
-  {
-    question: "Does it actually fix issues or just report them?",
-    answer:
-      "It does both. AutoDSM detects issues, proposes scoped fixes, validates results, and opens PRs for human review.",
-  },
-];
 
 export default function Home() {
   const [theme, setTheme] = useState<ThemeMode>("light");
@@ -226,6 +209,13 @@ export default function Home() {
               Build your product, build your brand.
               <span> AutoDSM gives teams a precise system to build from instead of a stale approximation.</span>
             </h2>
+            <p className="product-definition">
+              <strong>AutoDSM</strong> is a design-operations product for software teams. It connects to{" "}
+              <strong>GitHub</strong>, builds a <strong>living brand book</strong> from your source
+              (components, design tokens, typography, and assets), and opens <strong>pull requests</strong>{" "}
+              when it detects design-system drift—so agents and developers build against the real system, not
+              a stale handoff.
+            </p>
             <div className="replica-cards-row">
               {replicaCards.map((card) => (
                 <div className="replica-card-slot" key={card.light}>
@@ -309,7 +299,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="faq-list">
-            {faqs.map((faq, index) => (
+            {LANDING_FAQS.map((faq, index) => (
               <article
                 className="faq-item"
                 key={faq.question}
@@ -375,6 +365,14 @@ export default function Home() {
                 aria-hidden
               />
             </div>
+            <nav className="footer-aux" aria-label="Site and discovery">
+              <a href="/llms.txt" className="footer-aux-link">
+                LLM / AI context
+              </a>
+              <a href="/sitemap.xml" className="footer-aux-link">
+                Sitemap
+              </a>
+            </nav>
           </div>
           <ThemeModeSwitch isDark={theme === "dark"} onToggle={toggleTheme} />
         </div>

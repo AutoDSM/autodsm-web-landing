@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import Script from "next/script";
+import { SeoJsonLd } from "@/components/SeoJsonLd";
+import { getSiteUrl } from "@/lib/siteUrls";
 import "./globals.css";
 
 const headingFont = Manrope({
@@ -33,33 +35,51 @@ export const viewport: Viewport = {
   ],
 };
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
-  title: "AutoDSM | Design System Work, Delegated",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "AutoDSM | Design system automation from your GitHub repo",
+    template: "%s | AutoDSM",
+  },
   description:
-    "AutoDSM connects to your repo, builds a living brand book from source code, detects design-system drift, and opens pull requests to fix it.",
+    "Connect AutoDSM to GitHub to generate a living brand book from code, catch design-token and component drift, and open pull requests with fixes. Built for teams using AI coding agents.",
   keywords: [
     "design system",
+    "design system automation",
     "design tokens",
+    "design system drift",
     "component library",
+    "GitHub",
+    "pull request",
     "brand book",
     "design ops",
-    "automation",
-    "AI",
+    "Cursor",
+    "Claude Code",
+    "GitHub Copilot",
+    "AI coding agents",
     "developer tools",
   ],
-  authors: [{ name: "AutoDSM" }],
+  applicationName: "AutoDSM",
+  authors: [{ name: "AutoDSM", url: siteUrl }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "AutoDSM | Design System Work, Delegated",
+    title: "AutoDSM | Design system automation from your GitHub repo",
     description:
-      "Turn your repo into a living design system. AutoDSM reads your codebase, renders real components, and opens PRs to fix drift.",
+      "Turn your repo into a living design system. Real components, real tokens, and pull requests when drift appears—without maintaining Storybook by hand.",
     type: "website",
     locale: "en_US",
+    url: "/",
+    siteName: "AutoDSM",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AutoDSM | Design System Work, Delegated",
+    title: "AutoDSM | Design system automation from your GitHub repo",
     description:
-      "Turn your repo into a living design system. No stories, no manual docs, no maintenance tax.",
+      "Living brand books, agent-ready context, and pull requests when design-system drift shows up.",
   },
   robots: {
     index: true,
@@ -77,6 +97,7 @@ export default function RootLayout({
       <body
         className={`${headingFont.variable} ${bodyFont.variable} ${monoFont.variable} antialiased`}
       >
+        <SeoJsonLd />
         <Script id="autodsm-theme-init" strategy="beforeInteractive">
           {`(function(){try{var k="autodsm-theme",s=localStorage.getItem(k);var t=s==="light"||s==="dark"?s:matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;}catch(e){}})();`}
         </Script>
