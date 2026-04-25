@@ -930,9 +930,33 @@ ul {
   border-bottom: 1px solid color-mix(in srgb, var(--border-subtle) 70%, transparent);
 }
 
-/* Platform features: neutral band only — no purple wash, no reveal blur */
+/* Platform features: same canvas as #how-it-works; borderless #f3f3f4 cards */
 #features.section-muted {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
+  border-top: none;
+  border-bottom: none;
+}
+
+#features.section-muted .feature-card {
+  border: none;
+  background: #f3f3f4;
+}
+
+:root[data-theme="dark"] #features.section-muted .feature-card {
+  background: var(--bg-elevated);
+}
+
+#features.section-muted .feature-card:hover {
+  border: none;
+  background: #f3f3f4;
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] #features.section-muted .feature-card:hover {
+  border: none;
+  background: var(--bg-elevated);
+  box-shadow: none;
 }
 
 #features.reveal,
