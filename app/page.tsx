@@ -4,15 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import { ThemeModeSwitch } from "@/components/ThemeModeSwitch";
+import { WaitlistSignup } from "@/components/WaitlistSignup";
 
 type ThemeMode = "dark" | "light";
-
-const proofPoints = [
-  "Zero configuration",
-  "Code is the source of truth",
-  "No stories required",
-  "PR-based remediation",
-];
 
 const steps = [
   {
@@ -177,14 +171,7 @@ export default function Home() {
                 codebase, visualize your designs, and send agents to resolve UI issues.
               </p>
             </div>
-            <div className="hero-actions hero-entrance">
-              <a className="btn primary" href="#final-cta">
-                Get Started
-              </a>
-              <a className="btn ghost" href="#product">
-                View sample system
-              </a>
-            </div>
+            <WaitlistSignup />
           </div>
 
           <div className="hero-dashboard-frame hero-entrance">
@@ -212,12 +199,6 @@ export default function Home() {
                 unoptimized
               />
             </div>
-          </div>
-
-          <div className="proof-strip hero-entrance">
-            {proofPoints.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
           </div>
         </section>
 
@@ -343,14 +324,6 @@ export default function Home() {
               Connect your repo, render the truth, and let AutoDSM handle the work between design
               and code.
             </p>
-            <div className="hero-actions">
-              <a className="btn primary" href="#product">
-                Get Started
-              </a>
-              <a className="btn ghost" href="#product">
-                View sample system
-              </a>
-            </div>
           </div>
         </section>
       </main>
@@ -377,7 +350,6 @@ export default function Home() {
               />
             </div>
           </div>
-          <span>Code is the source of truth.</span>
           <ThemeModeSwitch isDark={theme === "dark"} onToggle={toggleTheme} />
         </div>
       </footer>

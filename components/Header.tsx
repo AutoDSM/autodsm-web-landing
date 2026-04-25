@@ -28,12 +28,6 @@ function HeaderContent() {
         <a href="#product">Product</a>
         <a href="#how-it-works">How it works</a>
       </nav>
-
-      <div className="nav-actions">
-        <a className="btn primary mini" href="#final-cta">
-          Get Started
-        </a>
-      </div>
     </div>
   );
 }
