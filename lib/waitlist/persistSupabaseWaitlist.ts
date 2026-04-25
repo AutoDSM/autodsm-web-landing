@@ -16,7 +16,10 @@ export type SupabasePersistResult =
 export async function persistWaitlistSignupSupabase(email: string): Promise<SupabasePersistResult> {
   const url = getSupabaseUrl();
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
-  if (!url || !serviceKey) {
+  if (!serviceKey) {
+    console.warn(
+      "[waitlist] Supabase skip: SUPABASE_SERVICE_ROLE_KEY is empty. Set it in .env.local (local) or Vercel env (prod), then restart the dev server.",
+    );
     return { kind: "skip" };
   }
 
@@ -34,10 +37,14 @@ export async function persistWaitlistSignupSupabase(email: string): Promise<Supa
     .single();
 
   if (error) {
-    if (error.code === "23505") {
+    const msg = `${error.message ?? ""} ${(error as { details?: string }).details ?? ""}`;
+    const isDuplicate =
+      error.code === "23505" ||
+      /duplicate key|unique constraint|already exists/i.test(msg);
+    if (isDuplicate) {
       return { kind: "duplicate" };
     }
-    console.error("[waitlist] Supabase insert failed:", error.code, error.message);
+    console.error("[waitlist] Supabase insert failed:", error.code, error.message, error);
     return { kind: "error" };
   }
 

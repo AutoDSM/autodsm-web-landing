@@ -38,7 +38,13 @@ export async function POST(request: Request) {
       if (result.code === "duplicate") {
         return jsonError("This email is already on the list", 409);
       }
-      return jsonError("Waitlist is temporarily unavailable", 503);
+      const payload: { error: string; hint?: string } = {
+        error: "Waitlist is temporarily unavailable",
+      };
+      if (process.env.NODE_ENV === "development") {
+        payload.hint = result.reason;
+      }
+      return NextResponse.json(payload, { status: 503 });
     }
     return NextResponse.json({ id: result.id }, { status: 201 });
   } catch {

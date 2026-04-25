@@ -1,5 +1,17 @@
 # Supabase dashboard: waitlist leads
 
+## Local dev: `POST /api/waitlist` returns 503
+
+This repo **defaults the public Supabase URL** in `next.config.ts`. You still need **`SUPABASE_SERVICE_ROLE_KEY`** in `.env.local` (or **Resend** for email-only).
+
+1. `cp env.local.template .env.local`
+2. Paste **service_role** from **Dashboard → Project Settings → API** into `SUPABASE_SERVICE_ROLE_KEY=`
+3. **Restart** `npm run dev` after any `.env.local` change.
+
+If both Supabase persistence and Resend are missing, you get “Waitlist is temporarily unavailable”.
+
+---
+
 Do these steps once per project (e.g. `qihitweosezlsjgyytdd`). Your app code expects table **`public.waitlist_signups`** and env vars from **Project Settings → API**.
 
 ## 1. Create the table

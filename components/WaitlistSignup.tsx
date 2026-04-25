@@ -30,7 +30,7 @@ export function WaitlistSignup({ idSuffix }: WaitlistSignupProps = {}) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.trim() }),
       });
-      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      const data = (await res.json().catch(() => ({}))) as { error?: string; hint?: string };
       if (res.status === 201) {
         setStatus("success");
         setMessage("You're on the list. We'll be in touch.");
@@ -42,7 +42,10 @@ export function WaitlistSignup({ idSuffix }: WaitlistSignupProps = {}) {
         return;
       }
       setStatus("error");
-      setMessage(data.error ?? "Could not join. Try again in a moment.");
+      {
+        const base = data.error ?? "Could not join. Try again in a moment.";
+        setMessage(data.hint ? `${base} ${data.hint}` : base);
+      }
     } catch {
       setStatus("error");
       setMessage("Network error. Check your connection and try again.");
