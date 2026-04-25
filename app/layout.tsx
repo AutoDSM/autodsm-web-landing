@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
@@ -80,6 +81,7 @@ export default function RootLayout({
           {`(function(){try{var k="autodsm-theme",s=localStorage.getItem(k);var t=s==="light"||s==="dark"?s:matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;}catch(e){}})();`}
         </Script>
         {children}
+        <Analytics />
       </body>
     </html>
   );
