@@ -74,12 +74,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "AutoDSM",
+    images: [
+      {
+        url: "/og.png",
+        width: 1024,
+        height: 537,
+        alt: "autoDSM — Design systems for the agentic era",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "AutoDSM | Design system automation from your GitHub repo",
     description:
       "Living brand books, agent-ready context, and pull requests when design-system drift shows up.",
+    images: ["/og.png"],
   },
   robots: {
     index: true,
