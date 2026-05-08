@@ -4,7 +4,6 @@
  */
 import { persistWaitlistSignupSupabase } from "@/lib/waitlist/persistSupabaseWaitlist";
 import { sendWaitlistNotifyEmail } from "@/lib/waitlist/sendWaitlistNotifyEmail";
-import { getSupabaseUrl } from "@/utils/supabase/env";
 
 export type WaitlistSaveResult =
   | { ok: true; id: string }
@@ -12,13 +11,13 @@ export type WaitlistSaveResult =
   | { ok: false; code: "unavailable"; reason: string };
 
 function describeSupabaseEnvGap(): string {
-  const url = getSupabaseUrl();
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() || process.env.SUPABASE_URL?.trim();
   const key = Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY?.trim());
   if (!url && !key) {
     return "Supabase is not configured: add SUPABASE_SERVICE_ROLE_KEY to .env.local (see env.local.template), or set RESEND_API_KEY for email-only mode. Restart the dev server after saving .env.local.";
   }
   if (!url) {
-    return "Missing project URL: set NEXT_PUBLIC_SUPABASE_URL (or SUPABASE_URL), or rely on the default in next.config.ts.";
+    return "Missing project URL: set NEXT_PUBLIC_SUPABASE_URL (or SUPABASE_URL) in .env.local / Vercel env, then restart the server.";
   }
   if (!key) {
     return "Add SUPABASE_SERVICE_ROLE_KEY to .env.local (Supabase Dashboard → Project Settings → API → service_role). Run: cp env.local.template .env.local then paste the key. Restart npm run dev.";

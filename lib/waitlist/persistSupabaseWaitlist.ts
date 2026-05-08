@@ -14,6 +14,15 @@ export type SupabasePersistResult =
   | { kind: "error" };
 
 export async function persistWaitlistSignupSupabase(email: string): Promise<SupabasePersistResult> {
+  const explicitUrl =
+    process.env.NEXT_PUBLIC_SUPABASE_URL?.trim() || process.env.SUPABASE_URL?.trim() || "";
+  if (!explicitUrl) {
+    console.warn(
+      "[waitlist] Supabase skip: missing NEXT_PUBLIC_SUPABASE_URL (or SUPABASE_URL). Add it to .env.local / Vercel env, then restart the server.",
+    );
+    return { kind: "skip" };
+  }
+
   const url = getSupabaseUrl();
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
   if (!serviceKey) {
