@@ -1048,13 +1048,14 @@ ul {
 
 .hero-figma-frame {
   width: 100%;
+  max-width: min(800px, 100%);
   margin-top: 0.25rem;
+  margin-inline: auto;
   border-radius: 12px;
   overflow: hidden;
   border: 4px solid #2c2c2c;
   background: #0d0d0d;
   display: grid;
-  max-height: min(60dvh, 666px);
 }
 
 .hero-figma-media {
@@ -1063,9 +1064,9 @@ ul {
 
 .hero-figma-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .hero-figma-image--phone {
