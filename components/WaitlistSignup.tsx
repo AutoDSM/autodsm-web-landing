@@ -7,9 +7,21 @@ type Status = "idle" | "loading" | "success" | "error";
 export type WaitlistSignupProps = {
   /** When set, label/input use `waitlist-email-${idSuffix}` so multiple forms on a page stay valid. */
   idSuffix?: string;
+  /** Optional layout variant for styling (does not change submission behavior). */
+  variant?: "default" | "figma-hero";
+  /** Placeholder shown in the email field. */
+  placeholder?: string;
+  /** Accessible label for the submit control (icon buttons should set this). */
+  submitAriaLabel?: string;
 };
 
-export function WaitlistSignup({ idSuffix }: WaitlistSignupProps = {}) {
+export function WaitlistSignup(props: WaitlistSignupProps = {}) {
+  const {
+    idSuffix,
+    variant = "default",
+    placeholder = "you@company.com",
+    submitAriaLabel,
+  } = props;
   const inputId = idSuffix ? `waitlist-email-${idSuffix}` : "waitlist-email";
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
@@ -55,10 +67,17 @@ export function WaitlistSignup({ idSuffix }: WaitlistSignupProps = {}) {
   const disabled = status === "loading" || status === "success";
   const submitLabel =
     status === "loading" ? "Joining…" : status === "success" ? "On the list" : "Join waitlist";
+  const resolvedSubmitAriaLabel = submitAriaLabel ?? submitLabel;
 
   return (
-    <div className="waitlist-block hero-entrance">
-      <form className="waitlist-form" onSubmit={onSubmit} noValidate>
+    <div
+      className={`waitlist-block hero-entrance${variant === "figma-hero" ? " waitlist-block--figma-hero" : ""}`}
+    >
+      <form
+        className={`waitlist-form${variant === "figma-hero" ? " waitlist-form--figma-hero" : ""}`}
+        onSubmit={onSubmit}
+        noValidate
+      >
         <label htmlFor={inputId} className="sr-only">
           Email for waitlist
         </label>
@@ -69,16 +88,35 @@ export function WaitlistSignup({ idSuffix }: WaitlistSignupProps = {}) {
           inputMode="email"
           autoComplete="email"
           required
-          placeholder="you@company.com"
-          className="waitlist-input"
+          placeholder={placeholder}
+          className={`waitlist-input${variant === "figma-hero" ? " waitlist-input--figma-hero" : ""}`}
           value={email}
           onChange={(ev) => setEmail(ev.target.value)}
           disabled={disabled}
           aria-invalid={status === "error" ? true : undefined}
         />
-        <button type="submit" className="btn primary waitlist-submit" disabled={disabled}>
-          {submitLabel}
-        </button>
+        {variant === "figma-hero" ? (
+          <button
+            type="submit"
+            className="waitlist-submit-icon btn primary"
+            disabled={disabled}
+            aria-label={resolvedSubmitAriaLabel}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M5 12h14M13 6l6 6-6 6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        ) : (
+          <button type="submit" className="btn primary waitlist-submit" disabled={disabled}>
+            {submitLabel}
+          </button>
+        )}
       </form>
       {message ? (
         <p
