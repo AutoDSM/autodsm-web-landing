@@ -81,41 +81,59 @@ export function WaitlistSignup(props: WaitlistSignupProps = {}) {
         <label htmlFor={inputId} className="sr-only">
           Email for waitlist
         </label>
-        <input
-          id={inputId}
-          name="email"
-          type="email"
-          inputMode="email"
-          autoComplete="email"
-          required
-          placeholder={placeholder}
-          className={`waitlist-input${variant === "figma-hero" ? " waitlist-input--figma-hero" : ""}`}
-          value={email}
-          onChange={(ev) => setEmail(ev.target.value)}
-          disabled={disabled}
-          aria-invalid={status === "error" ? true : undefined}
-        />
         {variant === "figma-hero" ? (
-          <button
-            type="submit"
-            className="waitlist-submit-icon btn primary"
-            disabled={disabled}
-            aria-label={resolvedSubmitAriaLabel}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M5 12h14M13 6l6 6-6 6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+          <div className="waitlist-field waitlist-field--figma-hero">
+            <input
+              id={inputId}
+              name="email"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              required
+              placeholder={placeholder}
+              className="waitlist-input waitlist-input--figma-hero"
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
+              disabled={disabled}
+              aria-invalid={status === "error" ? true : undefined}
+            />
+            <button
+              type="submit"
+              className="waitlist-submit-icon btn primary"
+              disabled={disabled}
+              aria-label={resolvedSubmitAriaLabel}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         ) : (
-          <button type="submit" className="btn primary waitlist-submit" disabled={disabled}>
-            {submitLabel}
-          </button>
+          <>
+            <input
+              id={inputId}
+              name="email"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              required
+              placeholder={placeholder}
+              className="waitlist-input"
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
+              disabled={disabled}
+              aria-invalid={status === "error" ? true : undefined}
+            />
+            <button type="submit" className="btn primary waitlist-submit" disabled={disabled}>
+              {submitLabel}
+            </button>
+          </>
         )}
       </form>
       {message ? (
