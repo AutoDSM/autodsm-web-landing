@@ -41,29 +41,6 @@ export default function Home() {
                   submitAriaLabel="Join waitlist"
                 />
               </div>
-
-              <div className="hero-figma-frame hero-entrance" aria-label="AutoDSM product preview">
-                <div className="hero-figma-media">
-                  <Image
-                    src="/visuals/landing/hero-prototype.jpg"
-                    alt="AutoDSM IDE preview: components, editor, and agent composer"
-                    width={1024}
-                    height={684}
-                    className="hero-figma-image hero-figma-image--desktop"
-                    sizes="(max-width: 1232px) calc(100vw - 2.5rem), 1200px"
-                    priority
-                  />
-                  <Image
-                    src="/visuals/landing/hero-prototype.jpg"
-                    alt=""
-                    width={1024}
-                    height={684}
-                    className="hero-figma-image hero-figma-image--phone"
-                    sizes="(max-width: 499px) calc(100vw - 2.5rem), 1024px"
-                    aria-hidden
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </section>

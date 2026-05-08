@@ -1055,7 +1055,7 @@ ul {
   overflow: hidden;
   border: 4px solid #2c2c2c;
   background: #0d0d0d;
-  display: grid;
+  display: none;
 }
 
 .hero-figma-media {
