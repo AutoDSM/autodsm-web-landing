@@ -34,7 +34,7 @@ export default function Home() {
                       </h1>
                     </div>
                     <p className="hero-sub hero-entrance figma-hero-subtitle">
-                      AutoDSM is the first ever design systems IDE built to empower product designers
+                      AutoDSM is the first ever design systems IDE built for empowering product designers to do their best work.
                     </p>
                   </div>
 
