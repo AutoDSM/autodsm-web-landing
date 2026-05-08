@@ -1077,29 +1077,22 @@ ul {
 .figma-hero-topbar {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 1rem;
-}
-
-.figma-hero-topbar .theme-switch {
-  justify-self: end;
 }
 
 .figma-hero-brand {
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
+  justify-self: center;
 }
 
 @media (max-width: 520px) {
   .figma-hero-topbar {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr;
     gap: 0.75rem;
-  }
-
-  .figma-hero-topbar > :first-child {
-    display: none;
   }
 
   .figma-hero-brand {
@@ -1174,7 +1167,7 @@ ul {
   z-index: 1;
   width: 100%;
   min-height: clamp(220px, 42vw, 620px);
-  padding: clamp(32px, 5vw, 64px);
+  padding: clamp(24px, 5cqi, 64px);
   display: grid;
   place-items: center;
   box-sizing: border-box;
@@ -1188,7 +1181,7 @@ ul {
 .hero-figma-product-preview {
   width: 100%;
   height: auto;
-  border-radius: 14px;
+  border-radius: clamp(10px, 2cqi, 14px);
   border: 1px solid color-mix(in srgb, #ffffff 18%, transparent);
   box-shadow:
     0 26px 70px -40px rgba(0, 0, 0, 0.85),

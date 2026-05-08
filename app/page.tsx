@@ -1,29 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { ThemeModeSwitch } from "@/components/ThemeModeSwitch";
 import { WaitlistSignup } from "@/components/WaitlistSignup";
 
 export default function Home() {
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    const t = document.documentElement.dataset.theme;
-    setIsDark(t === "dark");
-  }, []);
-
-  function onToggleTheme() {
-    const next = isDark ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    try {
-      window.localStorage.setItem("autodsm-theme", next);
-    } catch {
-      // ignore write failures (privacy mode)
-    }
-    setIsDark(next === "dark");
-  }
-
   return (
     <div className="page-shell">
       <main>
@@ -33,7 +13,6 @@ export default function Home() {
             <div className="figma-hero-inner">
               <div className="figma-hero-content">
                 <div className="figma-hero-topbar hero-entrance" aria-label="AutoDSM header">
-                  <div aria-hidden="true" />
                   <div className="figma-hero-brand" aria-label="AutoDSM">
                     <Image
                       src="/brand/Logo-Icon.svg"
@@ -45,7 +24,6 @@ export default function Home() {
                     />
                     <span className="figma-hero-wordmark">autoDSM</span>
                   </div>
-                  <ThemeModeSwitch isDark={isDark} onToggle={onToggleTheme} />
                 </div>
 
                 <div className="hero">
