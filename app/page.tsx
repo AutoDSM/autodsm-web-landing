@@ -6,8 +6,8 @@ function AppleIcon() {
   return (
     <svg
       className="hero-download-btn-icon"
-      width="20"
-      height="20"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden="true"
@@ -83,11 +83,12 @@ export default function Home() {
                 <div className="hero-figma-media hero-figma-foreground" aria-hidden="true">
                   <div className="hero-figma-foreground-inner">
                     <Image
-                      src="/visuals/landing/hero-prototype.jpg"
+                      src="/visuals/landing/AutoDSM-preview.svg"
                       alt=""
-                      width={1000}
-                      height={667}
+                      width={1200}
+                      height={850}
                       priority
+                      unoptimized
                       sizes="(max-width: 1024px) calc(100vw - 48px), 1000px"
                       className="hero-figma-product-preview"
                     />
