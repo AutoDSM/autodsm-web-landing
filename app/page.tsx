@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 const MACOS_DOWNLOAD_URL =
-  "https://github.com/AutoDSM/autodsm-app-t3code/releases/download/v0.0.27/AutoDSM-0.0.27-arm64.dmg";
+  "https://github.com/AutoDSM/autodsm-app-t3code/releases/download/v0.0.31/AutoDSM-0.0.31-arm64.dmg";
 
 function AppleIcon() {
   return (
