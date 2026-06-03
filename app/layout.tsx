@@ -29,10 +29,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   minimumScale: 1,
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0c10" },
-  ],
+  // Light-only landing: keep the browser/system chrome white regardless of OS theme.
+  themeColor: "#ffffff",
 };
 
 const siteUrl = getSiteUrl();
@@ -108,7 +106,7 @@ export default function RootLayout({
       >
         <SeoJsonLd />
         <Script id="autodsm-theme-init" strategy="beforeInteractive">
-          {`(function(){try{var k="autodsm-theme",s=localStorage.getItem(k);var t=s==="light"||s==="dark"?s:matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t;}catch(e){}})();`}
+          {`(function(){try{document.documentElement.dataset.theme="light";}catch(e){}})();`}
         </Script>
         {children}
         <Analytics />
