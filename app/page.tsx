@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 
+const MACOS_DOWNLOAD_URL =
+  "https://github.com/AutoDSM/autodsm-app-t3code/releases/download/v0.0.27/AutoDSM-0.0.27-arm64.dmg";
+
 function AppleIcon() {
   return (
     <svg
@@ -58,7 +61,7 @@ export default function Home() {
                       type="button"
                       className="hero-download-btn"
                       onClick={() => {
-                        // TODO: wire up macOS download
+                        window.location.href = MACOS_DOWNLOAD_URL;
                       }}
                     >
                       <AppleIcon />

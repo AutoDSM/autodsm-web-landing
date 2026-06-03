@@ -40,11 +40,11 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "AutoDSM | Design system automation from your GitHub repo",
+    default: "AutoDSM | The design system manager for product designers",
     template: "%s | AutoDSM",
   },
   description:
-    "Connect AutoDSM to GitHub to generate a living brand book from code, catch design-token and component drift, and open pull requests with fixes. Built for teams using AI coding agents.",
+    "AutoDSM is the design system manager built to empower product designers to do their best work—design, build, publish, and maintain your design system in one place.",
   keywords: [
     "design system",
     "design system automation",
@@ -67,9 +67,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "AutoDSM | Design system automation from your GitHub repo",
+    title: "Design, build, publish, and maintain your design system",
     description:
-      "Turn your repo into a living design system. Real components, real tokens, and pull requests when drift appears—without maintaining Storybook by hand.",
+      "AutoDSM is the design system manager built to empower product designers to do their best work—design, build, publish, and maintain your design system in one place.",
     type: "website",
     locale: "en_US",
     url: "/",
@@ -79,15 +79,15 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1024,
         height: 537,
-        alt: "autoDSM — Design systems for the agentic era",
+        alt: "AutoDSM — the design system manager for product designers",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AutoDSM | Design system automation from your GitHub repo",
+    title: "Design, build, publish, and maintain your design system",
     description:
-      "Living brand books, agent-ready context, and pull requests when design-system drift shows up.",
+      "The design system manager built to empower product designers to do their best work.",
     images: ["/og.png"],
   },
   robots: {

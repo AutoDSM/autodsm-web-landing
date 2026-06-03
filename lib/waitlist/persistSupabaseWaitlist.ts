@@ -5,7 +5,6 @@
  * Table: lib/waitlist/schema.sql → public.waitlist_signups
  */
 import { createClient } from "@supabase/supabase-js";
-import { getSupabaseUrl } from "@/utils/supabase/env";
 
 export type SupabasePersistResult =
   | { kind: "skip" }
@@ -23,7 +22,6 @@ export async function persistWaitlistSignupSupabase(email: string): Promise<Supa
     return { kind: "skip" };
   }
 
-  const url = getSupabaseUrl();
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
   if (!serviceKey) {
     console.warn(
@@ -32,7 +30,7 @@ export async function persistWaitlistSignupSupabase(email: string): Promise<Supa
     return { kind: "skip" };
   }
 
-  const supabase = createClient(url, serviceKey, {
+  const supabase = createClient(explicitUrl, serviceKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,
