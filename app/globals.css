@@ -1190,7 +1190,8 @@ ul {
   max-width: 1200px;
   margin-top: clamp(0.5rem, 2vw, 1.25rem);
   margin-inline: auto;
-  border-radius: clamp(20px, 3vw, 32px);
+  /* Container-relative radius (cqi tracks the hero section width, not the viewport) */
+  border-radius: clamp(16px, 2.7cqi, 32px);
   overflow: hidden;
   border: none;
   background: transparent;
@@ -1245,12 +1246,16 @@ ul {
 .hero-figma-foreground-inner {
   width: min(100%, 1000px);
   display: grid;
+  /* Query container so the preview's radius can track its own rendered width */
+  container-type: inline-size;
 }
 
 .hero-figma-product-preview {
   width: 100%;
   height: auto;
-  border-radius: 12px;
+  /* Radius scales with the preview's actual size (1cqi = 1% of its width),
+     clamped so it never looks sharp on phones or oversized on wide screens */
+  border-radius: clamp(8px, 2cqi, 20px);
   border: none;
   box-shadow: 0 40px 90px -50px rgba(40, 40, 50, 0.55);
 }
